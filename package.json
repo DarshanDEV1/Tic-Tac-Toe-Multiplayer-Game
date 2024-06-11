@@ -1,0 +1,21 @@
+{
+    "name": "my-tic-tac-toe-app",
+    "version": "1.0.0",
+    "description": "A MERN stack Tic Tac Toe game",
+    "main": "server/server.js",
+    "scripts": {
+      "start": "node server/server.js",
+      "dev": "nodemon server/server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "http": "^0.0.1-security",
+      "socket.io": "^3.1.2"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.7"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
