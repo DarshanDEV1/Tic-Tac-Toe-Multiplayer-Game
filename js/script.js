@@ -35,67 +35,33 @@ const handle_nav_about_click = (event) =>
     
 const Home = () => 
     {
-        const Home_Nav = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'nav-container' },
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_home_click, className: 'nav-link' },
-                            'Home'
-                        ),
-                        
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_game_click, className: 'nav-link' },
-                            'Game'
-                        ),
-            
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_scoreboard_click, className: 'nav-link' },
-                            'Scoreboard'
-                        ),
-            
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_about_click, className: 'nav-link' },
-                            'About'
-                        )
-                    )
-                );
-            }
+        const Home_Nav = () => {
+            return (
+                React.createElement('nav', { className: 'nav-container' },
+                    React.createElement('a', { href: '#', onClick: handle_nav_home_click, className: 'nav-link' }, 'Home'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_game_click, className: 'nav-link' }, 'Game'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_scoreboard_click, className: 'nav-link' }, 'Scoreboard'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_about_click, className: 'nav-link' }, 'About')
+                )
+            );
+        };
         
-        const Home_Body = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'home_body' },
-                        <p>
-                            Hello World How Are You Doing Today I Hope That You Are Doing Good.
-                        </p>
-                    )
-                );
-            }
+        const Home_Body = () => {
+            return (
+                React.createElement('div', { className: 'home_body' },
+                    React.createElement('h1', null, 'Welcome to the Tic Tac Toe Game'),
+                    React.createElement('p', null, 'This project showcases the development of a MERN stack application with a Tic Tac Toe game.')
+                )
+            );
+        };
         
-        const Home_Footer = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'home_body' },
-                        <p>
-                            Hello Yaaro This is Footer Section.
-                        </p>
-                    )
-                );
-            }
+        const Home_Footer = () => {
+            return (
+                React.createElement('div', { className: 'home_body' },
+                    React.createElement('p', null, 'Footer Section')
+                )
+            );
+        };
 
         ReactDOM.render(React.createElement(Home_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(Home_Body), document.getElementById('body'));
@@ -241,67 +207,41 @@ const Game = () =>
     }
 const Scoreboard = () =>
     {
-        const Scoreboard_Nav = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'nav-container' },
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_home_click, className: 'nav-link' },
-                            'Home'
-                        ),
-                        
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_game_click, className: 'nav-link' },
-                            'Game'
-                        ),
-            
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_scoreboard_click, className: 'nav-link' },
-                            'Scoreboard'
-                        ),
-            
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_about_click, className: 'nav-link' },
-                            'About'
-                        )
-                    )
-                );
-            }
+        const Scoreboard_Nav = () => {
+            return (
+                React.createElement('nav', { className: 'nav-container' },
+                    React.createElement('a', { href: '#', onClick: handle_nav_home_click, className: 'nav-link' }, 'Home'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_game_click, className: 'nav-link' }, 'Game'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_scoreboard_click, className: 'nav-link' }, 'Scoreboard'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_about_click, className: 'nav-link' }, 'About')
+                )
+            );
+        };
         
-        const Scoreboard_Body = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'home_body' },
-                        <p>
-                            Hello World How Are You Doing Today I Hope That You Are Doing Good.
-                        </p>
-                    )
-                );
-            }
+        const Scoreboard_Body = () => {
+            const [scores, setScores] = React.useState([]);
         
-        const Scoreboard_Footer = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'home_body' },
-                        <p>
-                            Hello Yaaro This is Footer Section.
-                        </p>
-                    )
-                );
-            }
+            React.useEffect(() => {
+                fetch('/api/scores')
+                    .then(response => response.json())
+                    .then(data => setScores(data));
+            }, []);
+        
+            return (
+                React.createElement('div', { className: 'scoreboard_body' },
+                    React.createElement('h1', null, 'Scoreboard'),
+                    scores.map((score, index) => React.createElement('p', { key: index }, `${score.name}: ${score.score}`))
+                )
+            );
+        };
+        
+        const Scoreboard_Footer = () => {
+            return (
+                React.createElement('div', { className: 'home_body' },
+                    React.createElement('p', null, 'Footer Section')
+                )
+            );
+        };
 
         ReactDOM.render(React.createElement(Scoreboard_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(Scoreboard_Body), document.getElementById('body'));
@@ -309,67 +249,46 @@ const Scoreboard = () =>
     }
 const About = () =>
     {
-        const About_Nav = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'nav-container' },
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_home_click, className: 'nav-link' },
-                            'Home'
-                        ),
-                        
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_game_click, className: 'nav-link' },
-                            'Game'
-                        ),
-            
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_scoreboard_click, className: 'nav-link' },
-                            'Scoreboard'
-                        ),
-            
-                        React.createElement(
-                            'a',
-                            { href: '#', onClick: handle_nav_about_click, className: 'nav-link' },
-                            'About'
-                        )
-                    )
-                );
-            }
+        const About_Nav = () => {
+            return (
+                React.createElement('nav', { className: 'nav-container' },
+                    React.createElement('a', { href: '#', onClick: handle_nav_home_click, className: 'nav-link' }, 'Home'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_game_click, className: 'nav-link' }, 'Game'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_scoreboard_click, className: 'nav-link' }, 'Scoreboard'),
+                    React.createElement('a', { href: '#', onClick: handle_nav_about_click, className: 'nav-link' }, 'About')
+                )
+            );
+        };
         
-        const About_Body = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'home_body' },
-                        <p>
-                            Hello World How Are You Doing Today I Hope That You Are Doing Good.
-                        </p>
-                    )
-                );
-            }
+        const About_Body = () => {
+            return (
+                React.createElement('div', { className: 'about_body' },
+                    React.createElement('h1', null, 'About the Author'),
+                    React.createElement('div', { className: 'author_bio' },
+                        React.createElement('img', { src: 'author.jpg', alt: 'Author', className: 'author_photo' }),
+                        React.createElement('p', null, 'Author bio goes here...')
+                    ),
+                    React.createElement('div', { className: 'social_links' },
+                        React.createElement('a', { href: 'https://linkedin.com', target: '_blank' }, 'LinkedIn'),
+                        React.createElement('a', { href: 'https://github.com', target: '_blank' }, 'GitHub'),
+                        React.createElement('a', { href: 'https://portfolio.com', target: '_blank' }, 'Portfolio')
+                    ),
+                    React.createElement('a', { href: 'resume.pdf', download: true }, 'Download Updated Resume'),
+                    React.createElement('h2', null, 'Technologies Used'),
+                    React.createElement('p', null, 'MERN stack (MongoDB, Express, React, Node.js)'),
+                    React.createElement('h2', null, 'Project Challenges'),
+                    React.createElement('p', null, 'Description of project challenges and how they were overcome.')
+                )
+            );
+        };
         
-        const About_Footer = () =>
-            {
-                return(
-                    React.createElement
-                    (
-                        'div',
-                        { className: 'home_body' },
-                        <p>
-                            Hello Yaaro This is Footer Section.
-                        </p>
-                    )
-                );
-            }
+        const About_Footer = () => {
+            return (
+                React.createElement('div', { className: 'home_body' },
+                    React.createElement('p', null, 'Footer Section')
+                )
+            );
+        };
 
         ReactDOM.render(React.createElement(About_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(About_Body), document.getElementById('body'));
