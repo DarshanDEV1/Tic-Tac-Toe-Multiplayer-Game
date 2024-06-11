@@ -1,3 +1,12 @@
+var state = State_Machine.Home;
+State_Machine
+{
+    "Home",
+    "Game",
+    "Scoreboard",
+    "About"
+};
+
 const handle_nav_home_click = (event) => 
     {
         event.preventDefault(); 
@@ -56,7 +65,52 @@ const Nav_Home = () =>
 const Nav_Body = () =>
     {
         return(
-            React.createElement()
+            React.createElement
+            (
+                'div',
+                { className: 'home_body' },
+                <p>
+                    Hello World How Are You Doing Today I Hope That You Are Doing Good.
+                </p>
+            )
         );
     }
-ReactDOM.render(React.createElement(Nav_Home), document.getElementById('root'));
+    
+const Home = () => 
+    {
+        ReactDOM.render(React.createElement(Nav_Home), document.getElementById('navigation_bar'));
+        ReactDOM.render(React.createElement(Nav_Body), document.getElementById('body'));
+    }
+const Game = () =>
+    {
+
+    }
+const Scoreboard = () =>
+    {
+
+    }
+const About = () =>
+    {
+
+    }
+
+
+// Executing Methods
+switch(state)
+{
+    case State_Machine.Home:
+        Home();
+        break;
+    case State_Machine.Game:
+        Game();
+        break;
+    case State_Machine.Scoreboard:
+        Scoreboard();
+        break;
+    case State_Machine.About:
+        About();
+        break;
+    default:
+        Home();
+        break;
+}
