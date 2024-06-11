@@ -20,7 +20,7 @@ A MERN stack Tic Tac Toe game with single-player and multiplayer modes.
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-repo-url.git
+    git clone https://github.com/DarshanDEV1/Tic-Tac-Toe-Multiplayer-Game.git
     cd my-tic-tac-toe-app
     ```
 
@@ -52,11 +52,11 @@ A MERN stack Tic Tac Toe game with single-player and multiplayer modes.
 
 ## Author
 
-[Your Name]
+[Bedaprakash Saidarsan Sahoo]
 
-- [LinkedIn](https://linkedin.com)
-- [GitHub](https://github.com)
-- [Portfolio](https://portfolio.com)
+- [LinkedIn](https://www.linkedin.com/in/bedaprakash-saidarsan-sahoo-1a6573203/)
+- [GitHub](https://github.com/DarshanDEV1)
+- [Portfolio](https://quatrandrz.playcode.io/)
 
 ## License
 
