@@ -1,0 +1,112 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    background-color: #f8f9fa;
+    justify-content: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.nav-link {
+    display: block;
+    margin: 10px 0;
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+.tic-tac-toe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust as necessary */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin-top: 10px; /* Adjust as necessary */
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.cell:hover {
+    background-color: #f0f0f0; /* Lighter color on hover */
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.status {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 20px; /* Adjust as necessary */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}

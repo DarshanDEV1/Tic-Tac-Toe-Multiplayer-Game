@@ -99,7 +99,7 @@ const Home = () =>
 
         ReactDOM.render(React.createElement(Home_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(Home_Body), document.getElementById('body'));
-        ReactDOM.render(React.createElement(Home_Footer), document.getElementById('footer_bar'));
+        // ReactDOM.render(React.createElement(Home_Footer), document.getElementById('footer_bar'));
     }
 const Game = () =>
     {
@@ -137,19 +137,89 @@ const Game = () =>
                 );
             }
         
-        const Game_Body = () =>
-            {
-                return(
-                    React.createElement
-                    (
+            const Game_Body = () => {
+                return (
+                    React.createElement(
                         'div',
                         { className: 'home_body' },
-                        <p>
-                            Hello World How Are You Doing Today I Hope That You Are Doing Good.
-                        </p>
+                        React.createElement(TicTacToe, null)
                     )
                 );
             }
+            
+            // Define the TicTacToe component
+            const TicTacToe = () => {
+                const initialBoard = Array(9).fill(null);
+                const [board, setBoard] = React.useState(initialBoard);
+                const [xIsNext, setXIsNext] = React.useState(true);
+                const [winner, setWinner] = React.useState(null);
+            
+                const handleClick = (i) => {
+                    if (winner || board[i]) return;
+                    const newBoard = [...board];
+                    newBoard[i] = xIsNext ? 'X' : 'O';
+                    setBoard(newBoard);
+                    setXIsNext(!xIsNext);
+                    setWinner(calculateWinner(newBoard));
+                };
+            
+                const resetGame = () => {
+                    setBoard(initialBoard);
+                    setXIsNext(true); // Reset xIsNext to true
+                    setWinner(null);
+                };
+            
+                const renderCell = (i) => {
+                    return (
+                        <div className="cell" onClick={() => handleClick(i)}>
+                            {board[i]}
+                        </div>
+                    );
+                };
+            
+                const calculateWinner = (squares) => {
+                    const lines = [
+                        [0, 1, 2],
+                        [3, 4, 5],
+                        [6, 7, 8],
+                        [0, 3, 6],
+                        [1, 4, 7],
+                        [2, 5, 8],
+                        [0, 4, 8],
+                        [2, 4, 6],
+                    ];
+                    for (let i = 0; i < lines.length; i++) {
+                        const [a, b, c] = lines[i];
+                        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                            return squares[a];
+                        }
+                    }
+                    return null;
+                };
+            
+                const renderStatus = () => {
+                    if (winner) {
+                        return `Winner: ${winner}`;
+                    } else {
+                        return `Next player: ${xIsNext ? 'X' : 'O'}`;
+                    }
+                };
+            
+                return (
+                    <div className="tic-tac-toe">
+                        <div className="status">{renderStatus()}</div>
+                        <div className="board">
+                            {Array(9)
+                                .fill()
+                                .map((_, i) => renderCell(i))}
+                        </div>
+                        <div className="controls">
+                            <button onClick={resetGame}>Reset Game</button>
+                        </div>
+                    </div>
+                );
+            };
+            
         
         const Game_Footer = () =>
             {
@@ -167,7 +237,7 @@ const Game = () =>
 
         ReactDOM.render(React.createElement(Game_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(Game_Body), document.getElementById('body'));
-        ReactDOM.render(React.createElement(Game_Footer), document.getElementById('footer_bar'));
+        // ReactDOM.render(React.createElement(Game_Footer), document.getElementById('footer_bar'));
     }
 const Scoreboard = () =>
     {
@@ -235,7 +305,7 @@ const Scoreboard = () =>
 
         ReactDOM.render(React.createElement(Scoreboard_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(Scoreboard_Body), document.getElementById('body'));
-        ReactDOM.render(React.createElement(Scoreboard_Footer), document.getElementById('footer_bar'));
+        // ReactDOM.render(React.createElement(Scoreboard_Footer), document.getElementById('footer_bar'));
     }
 const About = () =>
     {
@@ -303,7 +373,7 @@ const About = () =>
 
         ReactDOM.render(React.createElement(About_Nav), document.getElementById('navigation_bar'));
         ReactDOM.render(React.createElement(About_Body), document.getElementById('body'));
-        ReactDOM.render(React.createElement(About_Footer), document.getElementById('footer_bar'));
+        // ReactDOM.render(React.createElement(About_Footer), document.getElementById('footer_bar'));
     }
 
 
